@@ -1,0 +1,37 @@
+# FluxStream Project Gitignore
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.env
+venv/
+.venv/
+
+# Spark
+checkpoints/
+data/
+derby.log
+metastore_db/
+
+# Kafka
+kafka-logs/
+zookeeper-data/
+
+# Frontend (Node)
+node_modules/
+.next/
+out/
+build/
+
+# IDEs
+.vscode/
+.idea/
+.DS_Store
+
+# Large Data
+*dataset*
+*.csv
+*.parquet
+*.json
+!kafka/config.yml

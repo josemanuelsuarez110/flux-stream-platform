@@ -1,0 +1,31 @@
+# FluxStream Kafka Infrastructure Configuration
+# Optimized for high-throughput financial transactions
+
+topics:
+  - name: transactions.raw
+    partitions: 6
+    replication_factor: 3
+    retention_ms: 604800000 # 7 days
+    config:
+      cleanup.policy: delete
+      compression.type: lz4
+
+  - name: fraud.alerts
+    partitions: 3
+    replication_factor: 3
+    retention_ms: 2592000000 # 30 days
+    config:
+      cleanup.policy: delete
+      compression.type: snappy
+
+  - name: transactions.enriched
+    partitions: 6
+    replication_factor: 3
+    retention_ms: 172800000 # 2 days
+
+cluster_config:
+  bootstrap_servers: "localhost:9092"
+  security_protocol: PLAINTEXT
+  acks: all
+  retries: 5
+  batch_size: 16384
